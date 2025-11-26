@@ -83,7 +83,7 @@ if st.button("🔮 Prediksi Sekarang"):
             st.success("🩺 Hasil Prediksi: **JINAK (Benign)**")
 
         st.markdown("---")
-        st.caption("Model: Random Forest Classifier | Dataset: Breast Cancer Wisconsin (Diagnostic)")
+        st.caption("Model: Random Forest Classifier | Dataset: Breast Cancer Wisconsin (Original)")
 
     except Exception as e:
         st.error(f"Terjadi kesalahan saat prediksi: {e}")
@@ -95,4 +95,5 @@ st.markdown("""
 ---
 👨‍⚕️ *Aplikasi ini dikembangkan untuk membantu proses edukasi dan penelitian.*  
 Tidak menggantikan diagnosis medis profesional.
+Dibuat oleh: Kelompok 4 
 """)
