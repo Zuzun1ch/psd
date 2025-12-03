@@ -6,15 +6,14 @@ import joblib
 # Konfigurasi Halaman
 # ==============================
 st.set_page_config(
-    page_title="Prediksi Kanker Payudara 🧬",
-    page_icon="🩺",
+    page_title="Prediksi Kanker Payudara ",
     layout="centered"
 )
 
 # ==============================
 # Judul Aplikasi
 # ==============================
-st.title("🧬 Prediksi Kanker Payudara")
+st.title(" Prediksi Kanker Payudara")
 st.markdown("""
 Selamat datang di aplikasi **Prediksi Kanker Payudara**!  
 Masukkan nilai-nilai karakteristik sel di bawah ini, lalu klik tombol **Prediksi**  
@@ -26,9 +25,9 @@ untuk mengetahui apakah hasilnya **JINAK** atau **GANAS**.
 # ==============================
 try:
     model = joblib.load("model_rf.pkl")
-    st.success("✅ Model berhasil dimuat!")
+    st.success(" Model berhasil dimuat!")
 except Exception as e:
-    st.error(f"❌ Gagal memuat model: {e}")
+    st.error(f" Gagal memuat model: {e}")
 
 # ==============================
 # Layout Input Data
@@ -38,19 +37,19 @@ st.markdown("### 🔍 Masukkan Data Fitur")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    clump_thickness = st.slider("Clump Thickness", 1, 10, 5)
-    uniform_cell_size = st.slider("Uniformity of Cell Size", 1, 10, 5)
-    uniform_cell_shape = st.slider("Uniformity of Cell Shape", 1, 10, 5)
+    clump_thickness = st.slider("Clump Thickness", 1, 10, 1)
+    uniform_cell_size = st.slider("Uniformity of Cell Size", 1, 10, 1)
+    uniform_cell_shape = st.slider("Uniformity of Cell Shape", 1, 10, 1)
 
 with col2:
-    marginal_adhesion = st.slider("Marginal Adhesion", -1.0, 2.0, 0.0)
-    single_epithelial_size = st.slider("Single Epithelial Cell Size", -1.0, 2.0, 0.0)
-    bare_nuclei = st.slider("Bare Nuclei", -1.0, 2.0, 0.0)
+    marginal_adhesion = st.slider("Marginal Adhesion", 1, 10, 1)
+    single_epithelial_size = st.slider("Single Epithelial Cell Size", 1, 10, 1)
+    bare_nuclei = st.slider("Bare Nuclei", 1, 10, 1)
 
 with col3:
-    bland_chromatin = st.slider("Bland Chromatin", 1, 10, 3)
-    normal_nucleoli = st.slider("Normal Nucleoli", -1.0, 3.0, 0.0)
-    mitoses = st.slider("Mitoses", -1.0, 2.0, 0.0)
+    bland_chromatin = st.slider("Bland Chromatin", 1, 10, 1)
+    normal_nucleoli = st.slider("Normal Nucleoli", 1, 10, 1)
+    mitoses = st.slider("Mitoses", 1, 10, 1)
 
 # ==============================
 # Buat DataFrame dari Input
@@ -73,7 +72,7 @@ st.dataframe(data, use_container_width=True)
 # ==============================
 # Prediksi
 # ==============================
-if st.button("🔮 Prediksi Sekarang"):
+if st.button(" Prediksi Sekarang"):
     try:
         prediction = model.predict(data)[0]
 
@@ -83,7 +82,7 @@ if st.button("🔮 Prediksi Sekarang"):
             st.success("🩺 Hasil Prediksi: **JINAK (Benign)**")
 
         st.markdown("---")
-        st.caption("Model: Random Forest Classifier | Dataset: Breast Cancer Wisconsin (Original)")
+        st.caption("Model: Random Forest Classifier | Dataset: Breast Cancer Wisconsin (Diagnostic)")
 
     except Exception as e:
         st.error(f"Terjadi kesalahan saat prediksi: {e}")
@@ -93,7 +92,6 @@ if st.button("🔮 Prediksi Sekarang"):
 # ==============================
 st.markdown("""
 ---
-👨‍⚕️ *Aplikasi ini dikembangkan untuk membantu proses edukasi dan penelitian.*  
-Tidak menggantikan diagnosis medis profesional.
-Dibuat oleh: Kelompok 4 
+ *Aplikasi ini dikembangkan untuk membantu proses edukasi dan penelitian.*  
+Tidak menggantikan diagnosis medis profesional.|Dibuat oleh: Kelompok 4 
 """)
